@@ -5,8 +5,20 @@
     <title>Doraemon the robot cat</title>
 </head>
 <body>
-<canvas id="game" width = "1000" height = "500" style="border: black"></canvas>
+<canvas id="game" width = "800" height = "400"></canvas>
 <p id="score"></p>
-<script src="Case_study_1.js"></script>
+<p id="highest"></p>
+<label for="character">Choose your character:</label>
+<select name ="character" id ="character">
+    <option value ="1">Doraemon</option>
+    <option value ="2">Classic Flappy bird</option>
+</select>
+<label for ="background">Choose a background</label>
+<select name = "background" id ="background">
+    <option value = "1">#1</option>
+    <option value = "2">#2</option>
+</select>
+<button type="button" onclick="set()">Set</button>
+<script src="Case_Study_1.js"></script>
 </body>
 </html>
