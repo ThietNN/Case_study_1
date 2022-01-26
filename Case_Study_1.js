@@ -2,7 +2,9 @@
 let game = document.getElementById("game");
 let ctx = game.getContext("2d");
 let scoreboard = document.getElementById("score");
-let record = document.getElementById("highest");
+// let record = document.getElementById("highest");
+// let chooseChar = document.getElementById("character").value;
+// console.log(chooseChar);
 
 // khai báo biến ảnh
 let char = new Image();
@@ -10,7 +12,7 @@ let background = new Image();
 let upperPipe = new Image();
 let lowerPipe = new Image();
 
-// //khai báo nguồn ảnh
+
 
 // function set() {
 //     switch (chooseChar) {
@@ -24,7 +26,7 @@ let lowerPipe = new Image();
 //     run();
 // }
 
-
+//khai báo nguồn ảnh
 char.src = "images/Doraemon.png";
 background.src="images/background_2.png";
 upperPipe.src="images/Upper_Pipe.png";
@@ -35,7 +37,7 @@ lowerPipe.src="images/Lower_Pipe.png";
 let gap = 150;
 let distanceToLower = 200 + gap;
 let score =0;
-let max = 0;
+// let max = 0;
 
 //đặt vị trí nhân vật
 let charPosition={
@@ -92,11 +94,11 @@ function run(){
                 charPosition.y +charPosition.height>= pipe[i].y+ distanceToLower)
         ){
             // reset score, không alert để giữ highest score
-            score = 0;
+            // score = 0;
 
             //reset score và highest score
-            // alert ("Game over")
-            // return;
+            alert ("Game over")
+            return;
         }
 
         // score ++ khi qua pipe thành công
@@ -104,10 +106,10 @@ function run(){
             score ++;
         }
 
-        //lấy highest score (record)
-        if (score > max){
-            max = score
-        }
+        //lấy highest score (record) (dùng lệnh này khi tắt return)
+        // if (score > max){
+        //     max = score
+        // }
 
 
     }
@@ -115,7 +117,7 @@ function run(){
 
     //hiện điểm
     scoreboard.innerText = "score: " + score;
-    record.innerText = "Highest Score: " + max;
+    // record.innerText = "Highest Score: " + max;
 
     // trọng lực
     charPosition.y += 0.5;
