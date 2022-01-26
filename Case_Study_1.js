@@ -2,9 +2,7 @@
 let game = document.getElementById("game");
 let ctx = game.getContext("2d");
 let scoreboard = document.getElementById("score");
-// let record = document.getElementById("highest");
-// let chooseChar = document.getElementById("character").value;
-// console.log(chooseChar);
+
 
 // khai báo biến ảnh
 let char = new Image();
@@ -13,25 +11,21 @@ let upperPipe = new Image();
 let lowerPipe = new Image();
 
 
-
-// function set() {
-//     switch (chooseChar) {
-//         case 1:
-//             char.src = "images/Doraemon.png";
-//             break;
-//         case 2:
-//             char.src = "images/Classic.png";
-//             break;
-//     }
-//     run();
-// }
-
 //khai báo nguồn ảnh
 char.src = "images/Doraemon.png";
 background.src="images/background_2.png";
 upperPipe.src="images/Upper_Pipe.png";
 lowerPipe.src="images/Lower_Pipe.png";
 
+//khai báo âm thanh
+let hit = new Audio();
+let point = new Audio();
+let wing = new Audio();
+
+//khai báo nguồn âm thanh
+hit.src = "sounds/sfx_hit.mp3"
+wing.src = "sounds/sfx_wing.mp3"
+point.src = "sounds/sfx_point.mp3"
 
 //khai báo khoảng cách 2 ống trên/dưới, score ban đầu
 let gap = 150;
@@ -51,6 +45,7 @@ let charPosition={
 document.addEventListener("keydown",fly)
 function fly(){
     charPosition.y -=45;
+    wing.play();
 }
 
 //khai báo vị trí pipe
@@ -93,24 +88,17 @@ function run(){
 
                 charPosition.y +charPosition.height>= pipe[i].y+ distanceToLower)
         ){
-            // reset score, không alert để giữ highest score
-            // score = 0;
 
-            //reset score và highest score
-            alert ("Game over")
-            return;
+            hit.play();
+            location.reload();
+
         }
 
         // score ++ khi qua pipe thành công
         if(pipe[i].x == charPosition.x){
             score ++;
+            point.play();
         }
-
-        //lấy highest score (record) (dùng lệnh này khi tắt return)
-        // if (score > max){
-        //     max = score
-        // }
-
 
     }
 
